@@ -29,7 +29,7 @@ before_install:
 - mkdir -p ext/boost/
 - tar xzvf boost.tar.gz -C ./ext/boost/ >/dev/null
 - chmod +x ./project/gradlew
-#- git submodule update --remote $TRAVIS_BUILD_DIR/ext/vcmi
+- git submodule update --remote $TRAVIS_BUILD_DIR/ext/vcmi
 - python3.5 ./update_internal_assets.py
 - echo "y" | sdkmanager "cmake;3.6.4111459"
 script:
