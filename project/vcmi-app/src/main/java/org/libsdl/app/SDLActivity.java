@@ -677,6 +677,7 @@ public class SDLActivity extends ActivityBase
 
     private void initService()
     {
+        unbindServer();
         startService(new Intent(this, ServerService.class));
         bindService(new Intent(SDLActivity.this,
             ServerService.class), mServerServiceConnection, Context.BIND_AUTO_CREATE);
