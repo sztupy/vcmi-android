@@ -67,6 +67,7 @@ public class AsyncLauncherInitialization extends AsyncTask<Void, Void, AsyncLaun
         final File vcmiDir = new File(baseDir, Const.VCMI_DATA_ROOT_FOLDER_NAME);
         final File vcmiInternalDir = new File(internalDir, Const.VCMI_DATA_ROOT_FOLDER_NAME);
         Log.i(this, "Using " + vcmiDir.getAbsolutePath() + " as root vcmi dir");
+        Log.i(this, "Using " + vcmiInternalDir.getAbsolutePath() + " as internal vcmi dir");
         if (!vcmiDir.exists()) // we don't have root folder == new install (or deleted)
         {
             boolean allCreated = vcmiDir.mkdir();
