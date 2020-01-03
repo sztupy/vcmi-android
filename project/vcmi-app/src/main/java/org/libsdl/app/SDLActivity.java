@@ -1358,11 +1358,11 @@ public class SDLActivity extends ActivityBase
 
     private static class IncomingServerMessageHandler extends Handler
     {
-        private WeakReference<IncomingServerMessageHandlerCallback> mCallbackRef;
+        private IncomingServerMessageHandlerCallback mCallback;
 
         IncomingServerMessageHandler(final IncomingServerMessageHandlerCallback callback)
         {
-            mCallbackRef = new WeakReference<>(callback);
+            mCallback = callback;
         }
 
         @Override
@@ -1375,11 +1375,11 @@ public class SDLActivity extends ActivityBase
                     NativeMethods.notifyServerReady();
                     break;
                 case SERVER_MESSAGE_SERVER_KILLED:
-                    final IncomingServerMessageHandlerCallback callback = mCallbackRef.get();
-                    if (callback != null)
+                    if (mCallback != null)
                     {
-                        callback.unbindServer();
+                        mCallback.unbindServer();
                     }
+                    NativeMethods.notifyServerClosed();
                     break;
                 default:
                     super.handleMessage(msg);
@@ -1396,5 +1396,3 @@ public class SDLActivity extends ActivityBase
         }
     }
 }
-
-
